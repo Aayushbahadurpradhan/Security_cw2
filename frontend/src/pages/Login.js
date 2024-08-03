@@ -70,6 +70,29 @@ const Login = () => {
                         <img src={loginIcons} alt='login icons' />
                     </div>
 
+                    <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
+                        <div className='grid'>
+                            <label>Email:</label>
+                            <div className='bg-slate-100 p-2'>
+                                <input
+                                    type='email'
+                                    placeholder='Enter email'
+                                    name='email'
+                                    value={data.email}
+                                    onChange={handleOnChange}
+                                    className='w-full h-full outline-none bg-transparent'
+                                    required
+                                />
+                            </div>
+                            {errors.email && <p className='text-red-600'>{errors.email}</p>}
+                        </div>
+
+                        <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>
+                            Login
+                        </button>
+                        {errors.general && <p className='text-red-600 text-center mt-4'>{errors.general}</p>}
+                    </form>
+
                     <p className='my-5'>Don't have an account? <Link to={"/sign-up"} className='text-red-600 hover:text-red-700 hover:underline'>Sign up</Link></p>
                 </div>
             </div>
