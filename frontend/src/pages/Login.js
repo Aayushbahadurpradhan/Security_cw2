@@ -87,6 +87,28 @@ const Login = () => {
                             {errors.email && <p className='text-red-600'>{errors.email}</p>}
                         </div>
 
+                        <div>
+                            <label>Password:</label>
+                            <div className='bg-slate-100 p-2 flex'>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder='Enter password'
+                                    value={data.password}
+                                    name='password'
+                                    onChange={handleOnChange}
+                                    className='w-full h-full outline-none bg-transparent'
+                                    required
+                                />
+                                <div className='cursor-pointer text-xl' onClick={() => setShowPassword(prev => !prev)}>
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </div>
+                            </div>
+                            {errors.password && <p className='text-red-600'>{errors.password}</p>}
+                            <Link to={'/forgot-password'} className='block w-fit ml-auto hover:underline hover:text-red-600'>
+                                Forgot password?
+                            </Link>
+                        </div>
+
                         <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>
                             Login
                         </button>
