@@ -30,7 +30,7 @@
 //           <p className='text-lg text-center'>Loading ...</p>
 //         )
 //       }
- 
+
 //       <p className='text-lg font-semibold my-3'>Search Results : {data.length}</p>
 
 //       {
