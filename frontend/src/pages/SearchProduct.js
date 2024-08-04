@@ -51,3 +51,20 @@
 // }
 
 // export default SearchProduct
+
+
+
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import SummaryApi from '../common'
+import VerticalCard from '../components/VerticalCard'
+
+const SearchProduct = () => {
+  const query = useLocation()
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+
+
+}
+
+export default SearchProduct;
