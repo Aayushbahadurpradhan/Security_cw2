@@ -187,6 +187,15 @@ const SignUp = () => {
     });
     const navigate = useNavigate();
 
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+        validateField(name, value);
+    };
+
     const handleUploadPic = async (e) => {
         const file = e.target.files[0];
         const imagePic = await imageTobase64(file);
