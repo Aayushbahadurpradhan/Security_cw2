@@ -235,6 +235,36 @@ const SignUp = () => {
         return 'Moderate';
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (data.password === data.confirmPassword) {
+            try {
+                const dataResponse = await fetch(SummaryApi.signUP.url, {
+                    method: SummaryApi.signUP.method,
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const dataApi = await dataResponse.json();
+
+                if (dataApi.success) {
+                    toast.success(dataApi.message);
+                    navigate('/login');
+                } else if (dataApi.error) {
+                    toast.error(dataApi.message);
+                }
+            } catch (error) {
+                toast.error("An error occurred. Please try again.");
+            }
+        } else {
+            setErrors((prev) => ({
+                ...prev,
+                confirmPassword: 'Passwords do not match',
+            }));
+        }
+    };
 
 };
 
