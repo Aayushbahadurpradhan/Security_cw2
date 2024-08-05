@@ -284,6 +284,66 @@ const SignUp = () => {
                         </form>
                     </div>
 
+                    <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
+                        <div className='grid'>
+                            <label>Name:</label>
+                            <div className='bg-slate-100 p-2'>
+                                <input
+                                    type='text'
+                                    placeholder='Enter your name'
+                                    name='name'
+                                    value={data.name}
+                                    onChange={handleOnChange}
+                                    required
+                                    className='w-full h-full outline-none bg-transparent'
+                                />
+                                {errors.name && <p className='text-red-600'>{errors.name}</p>}
+                            </div>
+                        </div>
+
+                        <div className='grid'>
+                            <label>Email:</label>
+                            <div className='bg-slate-100 p-2'>
+                                <input
+                                    type='email'
+                                    placeholder='Enter email'
+                                    name='email'
+                                    value={data.email}
+                                    onChange={handleOnChange}
+                                    required
+                                    className='w-full h-full outline-none bg-transparent'
+                                />
+                                {errors.email && <p className='text-red-600'>{errors.email}</p>}
+                            </div>
+                        </div>
+
+                        <div>
+                            <label>Password:</label>
+                            <div className='bg-slate-100 p-2 flex'>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder='Enter password'
+                                    value={data.password}
+                                    name='password'
+                                    onChange={handleOnChange}
+                                    required
+                                    className='w-full h-full outline-none bg-transparent'
+                                />
+                                <div className='cursor-pointer text-xl' onClick={() => setShowPassword((prev) => !prev)}>
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </div>
+                            </div>
+                            {errors.password && <p className='text-red-600'>{errors.password}</p>}
+                            <p className={`text-sm ${passwordStrength === 'Weak' ? 'text-red-600' : passwordStrength === 'Strong' ? 'text-green-600' : 'text-yellow-600'}`}>
+                                Password Strength: {passwordStrength}
+                            </p>
+                        </div>
+
+                    </form>
+
+                    <p className='my-5'>
+                        Already have an account? <Link to={'/login'} className='text-red-600 hover:text-red-700 hover:underline'>Login</Link>
+                    </p>
                 </div>
             </div>
         </section>
