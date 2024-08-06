@@ -339,6 +339,28 @@ const SignUp = () => {
                             </p>
                         </div>
 
+                        <div>
+                            <label>Confirm Password:</label>
+                            <div className='bg-slate-100 p-2 flex'>
+                                <input
+                                    type={showConfirmPassword ? 'text' : 'password'}
+                                    placeholder='Enter confirm password'
+                                    value={data.confirmPassword}
+                                    name='confirmPassword'
+                                    onChange={handleOnChange}
+                                    required
+                                    className='w-full h-full outline-none bg-transparent'
+                                />
+                                <div className='cursor-pointer text-xl' onClick={() => setShowConfirmPassword((prev) => !prev)}>
+                                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                </div>
+                            </div>
+                            {errors.confirmPassword && <p className='text-red-600'>{errors.confirmPassword}</p>}
+                        </div>
+
+                        <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>
+                            Sign Up
+                        </button>
                     </form>
 
                     <p className='my-5'>
