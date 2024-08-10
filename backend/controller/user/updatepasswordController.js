@@ -153,7 +153,6 @@
 // module.exports = updatePassword;
 
 
-
 const User = require('../../models/userModel');
 const bcrypt = require('bcryptjs');
 
@@ -170,7 +169,7 @@ async function updatePassword(req, res, next) {
         }
 
         // Validate current password
-        if (!currentPassword || !user.password) {
+        if (!currentPassword) {
             return res.status(400).json({ error: "Current password is required" });
         }
 
@@ -186,7 +185,7 @@ async function updatePassword(req, res, next) {
         }
 
         // Check if the new password is different from the current password
-        if (currentPassword === newPassword) {
+        if (await bcrypt.compare(newPassword, user.password)) {
             return res.status(400).json({
                 error: "New password must be different from the current password",
             });
@@ -220,8 +219,9 @@ async function updatePassword(req, res, next) {
         // Save the updated user data
         await user.save();
 
-        // Clear the session or JWT token
-        res.clearCookie('token');
+        // Clear the session or JWT token (depending on your auth implementation)
+        res.clearCookie('token'); // If using cookies for session management
+        // If using JWT tokens, you might want to invalidate the token instead of clearing cookies
 
         // Send a response indicating success and the need to redirect to the login page
         res.status(200).json({ message: "Password updated successfully", redirect: true });
