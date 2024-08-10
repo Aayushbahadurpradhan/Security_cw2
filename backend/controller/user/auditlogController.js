@@ -67,23 +67,14 @@
 
 
 
-const { getAllAuditLogs, getAuditLogsByUserId, getAuditLogsByAction } = require('../../utils/auditlogService');
-
-// Handler to get all audit logs
 const fetchAllAuditLogs = async (req, res) => {
     try {
         const logs = await getAllAuditLogs();
 
-        // Decrypt the details of each log
-        const decryptedLogs = logs.map(log => ({
-            ...log._doc,
-            details: log.decryptDetails()
-        }));
-
         res.json({
             success: true,
             message: 'All audit logs fetched successfully!',
-            logs: decryptedLogs
+            logs: logs // Directly return the logs without any modifications
         });
     } catch (err) {
         console.error(err);
@@ -101,16 +92,10 @@ const fetchAuditLogsByUserId = async (req, res) => {
     try {
         const logs = await getAuditLogsByUserId(userId);
 
-        // Decrypt the details of each log
-        const decryptedLogs = logs.map(log => ({
-            ...log._doc,
-            details: log.decryptDetails()
-        }));
-
         res.json({
             success: true,
             message: `Audit logs for user ID ${userId} fetched successfully!`,
-            logs: decryptedLogs
+            logs: logs // Directly return the logs without any modifications
         });
     } catch (err) {
         console.error(err);
@@ -128,16 +113,10 @@ const fetchAuditLogsByAction = async (req, res) => {
     try {
         const logs = await getAuditLogsByAction(action);
 
-        // Decrypt the details of each log
-        const decryptedLogs = logs.map(log => ({
-            ...log._doc,
-            details: log.decryptDetails()
-        }));
-
         res.json({
             success: true,
             message: `Audit logs for action ${action} fetched successfully!`,
-            logs: decryptedLogs
+            logs: logs // Directly return the logs without any modifications
         });
     } catch (err) {
         console.error(err);
