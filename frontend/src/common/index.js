@@ -99,9 +99,9 @@
 
 // export default SummaryApi
 
-const backendDomain = process.env.REACT_APP_BACKEND_URL; // Corrected the typo from 'backendDomin' to 'backendDomain'
-
+const backendDomain = process.env.REACT_APP_BACKEND_URL;
 const SummaryApi = {
+    // User Authentication and Management
     signUP: {
         url: `${backendDomain}/api/signup`,
         method: "post"
@@ -126,10 +126,24 @@ const SummaryApi = {
         url: `${backendDomain}/api/update-user`,
         method: "post"
     },
-    updatePassword: {  // Added update password route
+    updatePassword: {
         url: `${backendDomain}/api/update-password`,
         method: "put"
     },
+    resetPassword: {
+        url: `${backendDomain}/api/reset-password`,
+        method: "post"
+    },
+    updateUserProfile: {
+        url: `${backendDomain}/api/update-profile`,
+        method: "post"
+    },
+    verifyEmail: {
+        url: `${backendDomain}/api/verify-email`,
+        method: "post"
+    },
+
+    // Product Management
     uploadProduct: {
         url: `${backendDomain}/api/upload-product`,
         method: 'post'
@@ -154,6 +168,8 @@ const SummaryApi = {
         url: `${backendDomain}/api/product-details`,
         method: 'post'
     },
+
+    // Cart Management
     addToCartProduct: {
         url: `${backendDomain}/api/addtocart`,
         method: 'post'
@@ -174,6 +190,8 @@ const SummaryApi = {
         url: `${backendDomain}/api/delete-cart-product`,
         method: 'post'
     },
+
+    // Search and Filter Products
     searchProduct: {
         url: `${backendDomain}/api/search`,
         method: 'get'
@@ -182,6 +200,8 @@ const SummaryApi = {
         url: `${backendDomain}/api/filter-product`,
         method: 'post'
     },
+
+    // Payment and Orders
     payment: {
         url: `${backendDomain}/api/checkout`,
         method: 'post'
@@ -194,19 +214,20 @@ const SummaryApi = {
         url: `${backendDomain}/api/all-order`,
         method: 'get'
     },
-    // Added audit log routes
+
+    // Audit Logs
     fetchAuditLogs: {
         url: `${backendDomain}/api/audit/logs`,
         method: 'get'
     },
     fetchAuditLogsByUserId: {
-        url: `${backendDomain}/api/audit/logs/user/:userId`, // Replace :userId with actual user ID in implementation
+        url: (userId) => `${backendDomain}/api/audit/logs/user/${userId}`, // Usage: SummaryApi.fetchAuditLogsByUserId.url(userId)
         method: 'get'
     },
     fetchAuditLogsByAction: {
-        url: `${backendDomain}/api/audit/logs/action/:action`, // Replace :action with actual action in implementation
+        url: (action) => `${backendDomain}/api/audit/logs/action/${action}`, // Usage: SummaryApi.fetchAuditLogsByAction.url(action)
         method: 'get'
-    }
+    },
 };
 
 export default SummaryApi;

@@ -38,10 +38,10 @@ const Footer = () => {
           <div className='flex items-center mb-4'>
             <img src={logo} alt='Logo' className='w-12 h-12 mr-2' />
             <div>
-              <p className='font-semibold'>Shalimar Helmet Shop</p>
+              <p className='font-semibold'>shani Helmet Shop</p>
               <p className='text-gray-400'>Bhaktapur</p>
               <p className='text-gray-400'>97456452</p>
-              <p className='text-gray-400'>shalimarhelmet@gmail.com</p>
+              <p className='text-gray-400'>shanihelmet@gmail.com</p>
             </div>
           </div>
 
