@@ -1,3 +1,6 @@
+const { getAllAuditLogs, getAuditLogsByUserId, getAuditLogsByAction } = require('../../utils/auditlogService');
+
+// Handler to get all audit logs
 const fetchAllAuditLogs = async (req, res) => {
     try {
         const logs = await getAllAuditLogs();
